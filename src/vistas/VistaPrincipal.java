@@ -43,36 +43,35 @@ public  class VistaPrincipal extends JFrame {
 		panel.setVisible(true);
 		
 		
-		
 		JButton iniciarUser = new JButton("Iniciar Usuario");
-		iniciarUser.setSize(150,30);
-		iniciarUser.setLocation(80, 245);
+			iniciarUser.setSize(150,30);
+			iniciarUser.setLocation(80, 245);
 		JButton iniciarAdmin = new JButton("Iniciar Admin");
-		iniciarAdmin.setSize(150,30);
-		iniciarAdmin.setLocation(240,245);
+			iniciarAdmin.setSize(150,30);
+			iniciarAdmin.setLocation(240,245);
 		JLabel label = new JLabel("Bienvenido al banco DAW");
-		label.setSize(220,30);
-		label.setLocation(175, 210);
+			label.setSize(220,30);
+			label.setLocation(175, 210);
 		panel.add(label);
 		panel.add(iniciarUser);
 		panel.add(iniciarAdmin);
 		
 		//configuracion y añadir elementos de la ventana de inicio de sesion para usuarios
-		sesion.setLayout(null);
-		sesion.setVisible(true);
+			sesion.setLayout(null);
+			sesion.setVisible(true);
 		
 		JLabel label2 = new JLabel("Introduzca sus creedenciales");
-		label2.setSize(220, 30);
-		label2.setLocation(170,150);
+			label2.setSize(220, 30);
+			label2.setLocation(170,150);
 		JTextField nombreUser = new JTextField(15);
-		nombreUser.setSize(220, 30);
-		nombreUser.setLocation(150,185);
+			nombreUser.setSize(220, 30);
+			nombreUser.setLocation(150,185);
 		JPasswordField contrasena = new JPasswordField(15);
-		contrasena.setSize(220, 30);
-		contrasena.setLocation(150,220);
+			contrasena.setSize(220, 30);
+			contrasena.setLocation(150,220);
 		JButton iniciarS = new JButton("Entrar");
-		iniciarS.setSize(150,30);
-		iniciarS.setLocation(175,255);
+			iniciarS.setSize(150,30);
+			iniciarS.setLocation(175,255);
 		
 		
 		sesion.add(label2);
@@ -87,17 +86,17 @@ public  class VistaPrincipal extends JFrame {
 		
 
 		JLabel label3 = new JLabel("Introduzca sus creedenciales de administrador");
-		label3.setSize(220, 30);
-		label3.setLocation(130,150);
+			label3.setSize(220, 30);
+			label3.setLocation(130,150);
 		JTextField nombreAdmin = new JTextField(15);
-		nombreAdmin.setSize(220, 30);
-		nombreAdmin.setLocation(150,185);
+			nombreAdmin.setSize(220, 30);
+			nombreAdmin.setLocation(150,185);
 		JPasswordField contrasenaAdmin = new JPasswordField(15);
-		contrasenaAdmin.setSize(220, 30);
-		contrasenaAdmin.setLocation(150,220);
+			contrasenaAdmin.setSize(220, 30);
+			contrasenaAdmin.setLocation(150,220);
 		JButton iniciarSAdmin = new JButton("Entrar");
-		iniciarSAdmin.setSize(150,30);
-		iniciarSAdmin.setLocation(175,255);
+			iniciarSAdmin.setSize(150,30);
+			iniciarSAdmin.setLocation(175,255);
 		
 		sesionAdmin.add(label3);
 		sesionAdmin.add(nombreAdmin);
@@ -107,25 +106,25 @@ public  class VistaPrincipal extends JFrame {
 		
 		//configuracion y añadir elementos de la vista de usuario
 		
-		usuario.setLayout(new GridLayout(1,2));
-		usuario.setVisible(true);
+			usuario.setLayout(new GridLayout(1,2));
+			usuario.setVisible(true);
 		JPanel datosUser = new JPanel();
 		JTextArea historial = new JTextArea();
 		usuario.add(datosUser);
 		usuario.add(historial);
 		
-		datosUser.setLayout(new GridLayout(2,1));
+			datosUser.setLayout(new GridLayout(2,1));
 		JPanel arribaizq = new JPanel();
 		JPanel funcionesUser = new JPanel();
-		datosUser.add(arribaizq);
-		datosUser.add(funcionesUser);
+			datosUser.add(arribaizq);
+			datosUser.add(funcionesUser);
 		
-		arribaizq.setLayout(new GridLayout(2,1));
+			arribaizq.setLayout(new GridLayout(2,1));
 		JLabel saldo= new JLabel();
-		JButton volverUser = new JButton("Cerrar Sesion");
- 		arribaizq.add(saldo);
-		arribaizq.add(volverUser);
-		funcionesUser.setLayout(new GridLayout(3,1));
+		JButton cerrarSesion = new JButton("Cerrar Sesion");
+ 			arribaizq.add(saldo);
+ 			arribaizq.add(cerrarSesion);
+			funcionesUser.setLayout(new GridLayout(3,1));
 		JButton retirar = new JButton("Retirar");
 		JButton ingresar = new JButton("Ingresar");
 		JButton pin = new JButton("Cambiar PIN");
@@ -139,54 +138,108 @@ public  class VistaPrincipal extends JFrame {
 		vistaIngresar.setLayout(null);
 		
 		JLabel ingreso = new JLabel("Introduzca la cantidad a Ingresar");
-		ingreso.setSize(220, 30);
-		ingreso.setLocation(170,150);		
+			ingreso.setSize(220, 30);
+			ingreso.setLocation(170,150);		
 		JTextField cantidadI = new JTextField(15);
-		cantidadI.setSize(220, 30);
-		cantidadI.setLocation(150,185);
+			cantidadI.setSize(220, 30);
+			cantidadI.setLocation(150,185);
 		JButton bIngresar = new JButton("Ingresar");
-		bIngresar.setSize(150, 30);
-		bIngresar.setLocation(175,220);
+			bIngresar.setSize(150, 30);
+			bIngresar.setLocation(175,220);
 		JLabel resultadoI = new JLabel();
-		resultadoI.setSize(260, 30);
-		resultadoI.setLocation(130,255);
-		JButton volverI = new JButton("Volver");
-		volverI.setSize(120, 30);
-		volverI.setLocation(30,420);
+			resultadoI.setSize(260, 30);
+			resultadoI.setLocation(130,255);
+		JButton volverUser = new JButton("Volver");
+			volverUser.setSize(120, 30);
+			volverUser.setLocation(30,420);
 		vistaIngresar.add(ingreso);
 		vistaIngresar.add(cantidadI);
 		vistaIngresar.add(bIngresar);
 		vistaIngresar.add(resultadoI);
-		vistaIngresar.add(volverI);
+		vistaIngresar.add(volverUser);
 		
+		//Ventana de funcionalidad Retirar dinero
+		vistaRetirar.setVisible(true);
+		vistaRetirar.setLayout(null);
+		
+		JLabel retiro = new JLabel("Introduzca la cantidad a Retirar");
+			retiro.setSize(220, 30);
+			retiro.setLocation(170,150);		
+		JTextField cantidadR = new JTextField(15);
+			cantidadR.setSize(220, 30);
+			cantidadR.setLocation(150,185);
+		JButton bRetirar = new JButton("Retirar");
+			bRetirar.setSize(150, 30);
+			bRetirar.setLocation(175,220);
+		JLabel resultadoR = new JLabel();
+			resultadoR.setSize(260, 30);
+			resultadoR.setLocation(130,255);
+		JButton volverUser2 = new JButton("Volver");
+			volverUser2.setSize(120, 30);
+			volverUser2.setLocation(30,420);
+		vistaRetirar.add(retiro);
+		vistaRetirar.add(cantidadR);
+		vistaRetirar.add(bRetirar);
+		vistaRetirar.add(resultadoR);
+		vistaRetirar.add(volverUser2);
+		
+			
+		//configuracion y ventana de cambiar pin
+		cambiarPin.setVisible(true);
+		cambiarPin.setLayout(null);
+		JLabel labelPin = new JLabel("Introduzca su nuevo pin");
+			labelPin.setSize(220, 30);
+			labelPin.setLocation(170,150);		
+		JTextField pin1 = new JTextField(15);
+			pin1.setSize(220, 30);
+			pin1.setLocation(130,185);
+		JTextField pin2 = new JTextField(15);
+			pin2.setSize(220, 30);
+			pin2.setLocation(130,220);
+		JButton bPin = new JButton("Cambiar Pin");	
+			bPin.setSize(150, 30);
+			bPin.setLocation(175,255);
+		JLabel resultadoPin = new JLabel();
+			resultadoPin.setSize(220, 30);
+			resultadoPin.setLocation(11500,290);
+		JButton volverUser3 = new JButton("Volver");
+			volverUser3.setSize(120, 30);
+			volverUser3.setLocation(30,420);
+		cambiarPin.add(labelPin);
+		cambiarPin.add(pin1);
+		cambiarPin.add(pin2);
+		cambiarPin.add(bPin);
+		cambiarPin.add(resultadoPin);
+		cambiarPin.add(volverUser3);
+	
 		
 		//configuracion y añadir elementos de la vista de administrador
 		admin.setVisible(true);
 		admin.setLayout(null);	
 		
 		JButton adminCu = new JButton("Administrar Cuentas");
-		adminCu.setSize(220, 30);
-		adminCu.setLocation(150,150);
+			adminCu.setSize(220, 30);
+			adminCu.setLocation(150,150);
 		
 		JButton adminT = new JButton("Administrar Tarjetas");
-		adminT.setSize(220, 30);
-		adminT.setLocation(150,185);
+			adminT.setSize(220, 30);
+			adminT.setLocation(150,185);
 		
 		JButton adminU = new JButton("Administrar Usuarios");
-		adminU.setSize(220, 30);
-		adminU.setLocation(150,220);
+			adminU.setSize(220, 30);
+			adminU.setLocation(150,220);
 		
 		JButton apagar = new JButton("Apagar");
-		apagar.setSize(220,30);
-		apagar.setLocation(150,255);
+			apagar.setSize(220,30);
+			apagar.setLocation(150,255);
 		
 		JButton reiniciar = new JButton("Reiniciar");
-		reiniciar.setSize(220, 30);
-		reiniciar.setLocation(150,290);
+			reiniciar.setSize(220, 30);
+			reiniciar.setLocation(150,290);
 		
 		JButton volver = new JButton("Cerrar Sesion");
-		volver.setSize(120, 30);
-		volver.setLocation(30,420);
+			volver.setSize(120, 30);
+			volver.setLocation(30,420);
 
 		admin.add(adminU);
 		admin.add(adminT);
@@ -203,6 +256,7 @@ public  class VistaPrincipal extends JFrame {
 		c.add(admin,"admin");
 		c.add(vistaIngresar,"ingresar");
 		c.add(vistaRetirar,"retirar");
+		c.add(cambiarPin,"pin");
 		//configuracion de las acciones de los botones
 		iniciarUser.addActionListener(new ActionListener() {
 
@@ -279,7 +333,7 @@ public  class VistaPrincipal extends JFrame {
 			
 		});
 		
-		volverUser.addActionListener(new ActionListener() {
+		cerrarSesion.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -309,7 +363,7 @@ public  class VistaPrincipal extends JFrame {
 			}
 			}
 		});
-		volverI.addActionListener(new ActionListener() {
+		volverUser.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -318,6 +372,61 @@ public  class VistaPrincipal extends JFrame {
 			}
 			
 		});
+		volverUser2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "usuario");
+				
+			}
+			
+		});
+		volverUser3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "usuario");
+				
+			}
+			
+		});
+		
+		
+		
+		retirar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c,"retirar");
+				
+			}
+			
+		});
+		
+		bRetirar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.comprobarSaldo(nombreUser.getText(),cantidadR.getText())){
+				resultadoR.setText("El dinero ha sido retirado con exito");
+			}else {
+				resultadoR.setText("Error, saldo insuficiente");
+			}
+			}
+		});
+		
+		pin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "pin");
+			
+				
+			}
+			
+		});
+		
+		
 	}
 	
 

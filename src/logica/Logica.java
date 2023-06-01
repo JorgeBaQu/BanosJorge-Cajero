@@ -20,6 +20,12 @@ public boolean checkLoginAdmin(String user, char[] pass) {
 		}
 	}
 	
-				
+public boolean comprobarSaldo(String user, String dinero) {
+	
+	if(Integer.parseInt(dinero)>1000) {
+		return false;
+	}else return true;
+	
+}
 	
 }
