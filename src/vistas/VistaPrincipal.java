@@ -37,7 +37,12 @@ public  class VistaPrincipal extends JFrame {
 		JPanel vistaIngresar = new JPanel();
 		JPanel vistaRetirar = new JPanel();
 		JPanel cambiarPin = new JPanel();
-		
+		JPanel adminUser = new JPanel();
+		JPanel adminTarjetas = new JPanel();
+		JPanel adminCuentas = new JPanel();
+		JPanel adminUser2 = new JPanel();
+		JPanel adminTarjetas2 = new JPanel();
+		JPanel adminCuentas2 = new JPanel();
 		//configuracion y añadir elementos de la ventana principal
 		panel.setLayout(null);
 		panel.setVisible(true);
@@ -60,7 +65,7 @@ public  class VistaPrincipal extends JFrame {
 			sesion.setLayout(null);
 			sesion.setVisible(true);
 		
-		JLabel label2 = new JLabel("Introduzca sus creedenciales");
+		JLabel label2 = new JLabel("Introduzca las creedenciales de su tarjeta");
 			label2.setSize(220, 30);
 			label2.setLocation(170,150);
 		JTextField nombreUser = new JTextField(15);
@@ -300,7 +305,7 @@ public  class VistaPrincipal extends JFrame {
 				}
 				
 			}
-			
+			 
 		});
 		
 		apagar.addActionListener(new ActionListener() {
