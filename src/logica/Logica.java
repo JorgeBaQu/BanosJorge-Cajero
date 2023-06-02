@@ -27,5 +27,21 @@ public boolean comprobarSaldo(String user, String dinero) {
 	}else return true;
 	
 }
+
+public boolean borrarUser(String user) {
+	return true;
+}
+
+public boolean borrarTarjeta(String user) {
+	return true;
+}
+
+public boolean borrarCuenta(String user) {
+	return true;
+}
+public boolean crearUser() {
+	return true;
+}
+
 	
 }

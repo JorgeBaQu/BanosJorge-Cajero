@@ -3,6 +3,7 @@ package vistas;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,9 +41,14 @@ public  class VistaPrincipal extends JFrame {
 		JPanel adminUser = new JPanel();
 		JPanel adminTarjetas = new JPanel();
 		JPanel adminCuentas = new JPanel();
-		JPanel adminUser2 = new JPanel();
-		JPanel adminTarjetas2 = new JPanel();
-		JPanel adminCuentas2 = new JPanel();
+		JPanel elegirUser = new JPanel();
+		JPanel elegirTarjetas = new JPanel();
+		JPanel elegirCuentas = new JPanel();
+		JPanel crearCuenta = new JPanel();
+		JPanel crearTarjeta = new JPanel();
+		JPanel modificarTarjeta = new JPanel();
+		JPanel crearUsuario = new JPanel();
+		JPanel modificarUsuario = new JPanel();
 		//configuracion y añadir elementos de la ventana principal
 		panel.setLayout(null);
 		panel.setVisible(true);
@@ -66,8 +72,8 @@ public  class VistaPrincipal extends JFrame {
 			sesion.setVisible(true);
 		
 		JLabel label2 = new JLabel("Introduzca las creedenciales de su tarjeta");
-			label2.setSize(220, 30);
-			label2.setLocation(170,150);
+			label2.setSize(260, 30);
+			label2.setLocation(140,150);
 		JTextField nombreUser = new JTextField(15);
 			nombreUser.setSize(220, 30);
 			nombreUser.setLocation(150,185);
@@ -91,8 +97,8 @@ public  class VistaPrincipal extends JFrame {
 		
 
 		JLabel label3 = new JLabel("Introduzca sus creedenciales de administrador");
-			label3.setSize(220, 30);
-			label3.setLocation(130,150);
+			label3.setSize(280, 30);
+			label3.setLocation(125,150);
 		JTextField nombreAdmin = new JTextField(15);
 			nombreAdmin.setSize(220, 30);
 			nombreAdmin.setLocation(150,185);
@@ -253,6 +259,164 @@ public  class VistaPrincipal extends JFrame {
 		admin.add(apagar);
 		admin.add(volver);
 		
+		//configuracion de la gestion de Tarjetas
+		
+		adminTarjetas.setVisible(true);
+		adminTarjetas.setLayout(null);
+		
+		JButton borrarTarjetas = new JButton("Borrar Tarjeta");
+		borrarTarjetas.setSize(150, 30);
+		borrarTarjetas.setLocation(160,170);
+		JButton modificarTarjetas = new JButton("Modificar Tarjeta");
+		modificarTarjetas.setSize(150, 30);
+		modificarTarjetas.setLocation(160,205);
+		JButton crearTarjetas = new JButton("Crear Tarjeta");
+		crearTarjetas.setSize(150, 30);
+		crearTarjetas.setLocation(160,240);
+		JButton volverUser5 = new JButton("Volver");
+			volverUser5.setSize(120, 30);
+			volverUser5.setLocation(30,420);
+		
+		adminTarjetas.add(borrarTarjetas);
+		adminTarjetas.add(modificarTarjetas);
+		adminTarjetas.add(crearTarjetas);
+		adminTarjetas.add(volverUser5);
+		
+		//configuracion de la gestion de usuarios
+		
+		adminUser.setVisible(true);
+		adminUser.setLayout(null);
+		
+		JButton borrarUser = new JButton("Borrar Usuario");
+		borrarUser.setSize(150, 30);
+		borrarUser.setLocation(160,170);
+		JButton modificarUser = new JButton("Modificar Usuario");
+		modificarUser.setSize(150, 30);
+		modificarUser.setLocation(160,205);
+		JButton crearUser = new JButton("Crear Usuario");
+		crearUser.setSize(150, 30);
+		crearUser.setLocation(160,240);
+		JButton volverUser4 = new JButton("Volver");
+		volverUser4.setSize(120, 30);
+		volverUser4.setLocation(30,420);
+		
+		adminUser.add(borrarUser);
+		adminUser.add(modificarUser);
+		adminUser.add(crearUser);
+		adminUser.add(volverUser4);
+		//configuracion de la gestion de Cuentas
+		
+		adminCuentas.setVisible(true);
+		adminCuentas.setLayout(null);
+		
+		JButton borrarCuentas = new JButton("Borrar Cuenta");
+		borrarCuentas.setSize(150, 30);
+		borrarCuentas.setLocation(160,170);
+		JButton crearCuentas = new JButton("Crear Cuenta");
+		crearCuentas.setSize(150, 30);
+		crearCuentas.setLocation(160,205);
+		JButton volverUser6 = new JButton("Volver");
+		volverUser6.setSize(120, 30);
+		volverUser6.setLocation(30,420);
+		
+		adminCuentas.add(borrarCuentas);
+		adminCuentas.add(crearCuentas);
+		adminCuentas.add(volverUser6);
+		
+		//selector de usuario a eliminar
+		
+		elegirUser.setVisible(true);
+		elegirUser.setLayout(null);
+		
+		JLabel labelUser = new JLabel("Introduce el usuario");
+		labelUser.setSize(250, 30);
+		labelUser.setLocation(130,185);
+		JTextField textUser = new JTextField(20);
+		textUser.setSize(250,30);
+		textUser.setLocation(130,220);
+		JButton buttonUser = new JButton("Siguiente");
+		buttonUser.setSize(160,30);
+		buttonUser.setLocation(175,255);
+		JButton volverUser7 = new JButton("Volver");
+		volverUser7.setSize(120, 30);
+		volverUser7.setLocation(30,420);
+		
+		elegirUser.add(labelUser);
+		elegirUser.add(textUser);
+		elegirUser.add(buttonUser);
+		elegirUser.add(volverUser7);
+		//selector de tarjeta a eliminar
+		
+		elegirTarjetas.setVisible(true);
+		elegirTarjetas.setLayout(null);
+		
+		JLabel labelTarjeta = new JLabel("Introduce la tarjeta");
+		labelTarjeta.setSize(250, 30);
+		labelTarjeta.setLocation(130,185);
+		JTextField textTarjeta = new JTextField(20);
+		textTarjeta.setSize(250,30);
+		textTarjeta.setLocation(130,220);
+		JButton buttonTarjeta = new JButton("Siguiente");
+		buttonTarjeta.setSize(160,30);
+		buttonTarjeta.setLocation(175,255);
+		JButton volverUser8 = new JButton("Volver");
+		volverUser8.setSize(120, 30);
+		volverUser8.setLocation(30,420);
+		
+		elegirTarjetas.add(labelTarjeta);
+		elegirTarjetas.add(textTarjeta);
+		elegirTarjetas.add(buttonTarjeta);
+		elegirTarjetas.add(volverUser8);
+		
+	//selector de cuenta a eliminar
+		
+		elegirCuentas.setVisible(true);
+		elegirCuentas.setLayout(null);
+		
+		JLabel labelCuenta = new JLabel("Introduce la cuenta");
+		labelCuenta.setSize(250, 30);
+		labelCuenta.setLocation(130,185);
+		JTextField textCuenta = new JTextField(20);
+		textCuenta.setSize(250,30);
+		textCuenta.setLocation(130,220);
+		JButton buttonCuenta = new JButton("Siguiente");
+		buttonCuenta.setSize(160,30);
+		buttonCuenta.setLocation(175,255);
+		JButton volverUser9 = new JButton("Volver");
+		volverUser9.setSize(120, 30);
+		volverUser9.setLocation(30,420);
+		
+		elegirCuentas.add(labelCuenta);
+		elegirCuentas.add(textCuenta);
+		elegirCuentas.add(buttonCuenta);
+		elegirCuentas.add(volverUser9);
+		
+		//creacion de una cuenta
+		
+		crearCuenta.setVisible(true);
+		crearCuenta.setLayout(null);
+		
+		JLabel lCliente = new JLabel("Nombre del cliente:");
+		lCliente.setSize(160,30);
+		lCliente.setLocation(170,135);
+		JTextField tCliente = new JTextField(20);
+		tCliente.setSize(180,30);
+		tCliente.setLocation(175,170);
+		JLabel lSaldo = new JLabel("Saldo de la cuenta:");
+		lSaldo.setSize(160,30);
+		lSaldo.setLocation(170,215);
+		JTextField tSaldo = new JTextField(20);
+		tSaldo.setSize(180,30);
+		tSaldo.setLocation(175,240);
+		JButton bCCuenta = new JButton("Crear");
+		bCCuenta.setSize(100,30);
+		bCCuenta.setLocation(200,275);		
+		crearCuenta.add(lCliente);
+		crearCuenta.add(tCliente);
+		crearCuenta.add(lSaldo);
+		crearCuenta.add(tSaldo);
+		crearCuenta.add(bCCuenta);
+		
 		
 		c.add(panel,"panel");
 		c.add(sesion,"sesion");
@@ -262,6 +426,13 @@ public  class VistaPrincipal extends JFrame {
 		c.add(vistaIngresar,"ingresar");
 		c.add(vistaRetirar,"retirar");
 		c.add(cambiarPin,"pin");
+		c.add(adminUser,"adminUser");
+		c.add(adminCuentas,"adminCuentas");
+		c.add(adminTarjetas,"adminTarjetas");
+		c.add(elegirUser,"elegirUser");
+		c.add(elegirTarjetas,"elegirTarjetas");
+		c.add(elegirCuentas,"elegirCuentas");
+		c.add(crearCuenta,"crearCuenta");
 		//configuracion de las acciones de los botones
 		iniciarUser.addActionListener(new ActionListener() {
 
@@ -395,6 +566,62 @@ public  class VistaPrincipal extends JFrame {
 			}
 			
 		});
+		volverUser4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "admin");
+				
+			}
+			
+		});
+		
+		volverUser5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "admin");
+				
+			}
+			
+		});
+		volverUser6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "admin");
+				
+			}
+			
+		});
+		
+		volverUser7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminUser");
+				
+			}
+			
+		});
+		volverUser8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminTarjetas");
+				
+			}
+			
+		});
+		volverUser9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminCuentas");
+				
+			}
+			
+		});
 		
 		
 		
@@ -431,6 +658,120 @@ public  class VistaPrincipal extends JFrame {
 			
 		});
 		
+		adminU.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminUser");
+				
+			}
+			
+		});
+		adminT.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminTarjetas");
+				
+			}
+			
+		});
+		adminCu.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminCuentas");
+				
+			}
+			
+		});
+		borrarUser.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "elegirUser");
+				
+			}
+			
+		});
+		modificarUser.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+			
+		});
+		borrarTarjetas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "elegirTarjetas");
+				
+			}
+			
+		});
+		modificarTarjetas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+			
+		});
+		borrarCuentas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				cl.show(c, "elegirCuentas");
+				
+				
+			}
+			
+		});
+		
+		buttonCuenta.addActionListener(new ActionListener() {
+			
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.borrarCuenta(textCuenta.getText())) {
+					JOptionPane.showMessageDialog(new JFrame(), "Cuenta borrada con exito");			
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la cuenta, introduzcalo de nuevo");			
+			}
+		});
+		buttonTarjeta.addActionListener(new ActionListener() {
+			
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.borrarTarjeta(textTarjeta.getText())) {
+					JOptionPane.showMessageDialog(new JFrame(), "Cuenta borrada con exito");			
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la cuenta, introduzcalo de nuevo");			
+			}
+		});
+		buttonUser.addActionListener(new ActionListener() {
+			
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.borrarUser(textUser.getText())) {
+					JOptionPane.showMessageDialog(new JFrame(), "Cuenta borrada con exito");			
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la cuenta, introduzcalo de nuevo");			
+			}
+		});
+		crearCuentas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "crearCuenta");
+				
+			}
+			
+		});
 		
 	}
 	
