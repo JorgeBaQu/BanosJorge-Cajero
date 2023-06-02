@@ -15,11 +15,11 @@ telefono char(9)not null unique,
 email varchar(20)not null unique,
 direccion varchar(200)not null,
 dni char(9) primary key,
-contrasena varchar(20) not null
+contrasena varchar(20) not null,
+admin bit not null
 );
 
 create table if not exists cuentas(
-cliente enum('individual','indistinto'),
 iban int unsigned auto_increment primary key,
 saldo int not null
 );
@@ -47,21 +47,20 @@ foreign key (cuenta,cliente) references propietario(cuenta,cliente)
 );
 
 create table if not exists movimientos(
-cuenta_receptor int unsigned,
-cuenta_emisor int unsigned, 
+cuenta int unsigned, 
 codigo int unsigned auto_increment primary key, 
-transferencia int unsigned not null,
-foreign key (cuenta_receptor) references cuentas(iban),
-foreign key (cuenta_emisor) references cuentas(iban)
+transferencia varchar(100) not null ,
+foreign key (cuenta) references cuentas(iban)
 );
-insert into clientes values('Jorge','Baños','Quiroga','600100100','jbq@gmail.com','Plaza Mayor', 123456789,'123'),
-('Aaron','Valea','Martin','600100200','avm@gmail.com','Plaza Mayor', 111222333,'123'),
-('Sergio','Erce','Martinez','600100300','sem@gmail.com','Plaza Mayor', 987654321,'123');
 
-insert into cuentas values('individual',1, 1000),
-('individual', 2,  1000),
-('individual', 3, 1000),
-('indistinto',4, 1000);
+insert into clientes values('Jorge','Baños','Quiroga','600100100','jbq@gmail.com','Plaza Mayor', 123456789,'123',1),
+('Aaron','Valea','Martin','600100200','avm@gmail.com','Plaza Mayor', 111222333,'123',0),
+('Sergio','Erce','Martinez','600100300','sem@gmail.com','Plaza Mayor', 987654321,'123',0);
+
+insert into cuentas values(1, 1000),
+( 2,  1000),
+( 3, 1000),
+(4, 1000);
 
 insert into propietario values(1, 123456789),
 (2, 111222333),
