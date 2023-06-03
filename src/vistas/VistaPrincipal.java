@@ -7,13 +7,14 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.SQLException;
+import dto.*;
 import javax.swing.*;
 
 import logica.Logica;
 
 
-public  class VistaPrincipal extends JFrame {
+public  class VistaPrincipal extends JFrame  {
 	
 	public VistaPrincipal() {
 		
@@ -121,6 +122,7 @@ public  class VistaPrincipal extends JFrame {
 			usuario.setVisible(true);
 		JPanel datosUser = new JPanel();
 		JTextArea historial = new JTextArea();
+		historial.setEditable(false);
 		usuario.add(datosUser);
 		usuario.add(historial);
 		
@@ -396,12 +398,13 @@ public  class VistaPrincipal extends JFrame {
 		crearCuenta.setVisible(true);
 		crearCuenta.setLayout(null);
 		
-		JLabel lCliente = new JLabel("Nombre del cliente:");
-		lCliente.setSize(160,30);
-		lCliente.setLocation(170,135);
-		JTextField tCliente = new JTextField(20);
-		tCliente.setSize(180,30);
-		tCliente.setLocation(175,170);
+		
+		JLabel lCuenta = new JLabel("Numero de cuenta:");
+		lCuenta.setSize(160,30);
+		lCuenta.setLocation(170,135);
+		JTextField tCuenta = new JTextField(20);
+		tCuenta.setSize(180,30);
+		tCuenta.setLocation(175,170);
 		JLabel lSaldo = new JLabel("Saldo de la cuenta:");
 		lSaldo.setSize(160,30);
 		lSaldo.setLocation(170,215);
@@ -410,12 +413,176 @@ public  class VistaPrincipal extends JFrame {
 		tSaldo.setLocation(175,240);
 		JButton bCCuenta = new JButton("Crear");
 		bCCuenta.setSize(100,30);
-		bCCuenta.setLocation(200,275);		
-		crearCuenta.add(lCliente);
-		crearCuenta.add(tCliente);
+		bCCuenta.setLocation(200,275);	
+		JButton volverUser10= new JButton("Volver");
+		volverUser10.setSize(120, 30);
+		volverUser10.setLocation(30,420);
+		
+		crearCuenta.add(lCuenta);
+		crearCuenta.add(tCuenta);
 		crearCuenta.add(lSaldo);
 		crearCuenta.add(tSaldo);
 		crearCuenta.add(bCCuenta);
+		crearCuenta.add(volverUser10);
+		
+		//Modificar una Tarjeta
+		
+		modificarTarjeta.setVisible(true);
+		modificarTarjeta.setLayout(new GridLayout(6,2));
+		JLabel modifT1 = new JLabel("Numero de la tarjeta a modificar:");
+		JLabel modifT2 = new JLabel("Limite_Diario:");
+		JLabel modifT3 = new JLabel("Limite_mensual:");
+		JLabel modifT4 = new JLabel("Pin:");
+		JLabel modifT5 = new JLabel("Tipo:");
+		JButton volverUser11= new JButton("Volver");
+		
+		JTextField modifTT1 = new JTextField(15);
+		JTextField modifTT2 = new JTextField(15);
+		JTextField modifTT3 = new JTextField(15);
+		JTextField modifTT4 = new JTextField(15);
+		JTextField modifTT5 = new JTextField(15);
+		JButton modifTB = new JButton("Modificar");
+		
+		modificarTarjeta.add(modifT1);
+		modificarTarjeta.add(modifTT1);
+		modificarTarjeta.add(modifT2);
+		modificarTarjeta.add(modifTT2);
+		modificarTarjeta.add(modifT3);
+		modificarTarjeta.add(modifTT3);
+		modificarTarjeta.add(modifT4);
+		modificarTarjeta.add(modifTT4);
+		modificarTarjeta.add(modifT5);	
+		modificarTarjeta.add(modifTT5);
+		modificarTarjeta.add(volverUser11);
+		modificarTarjeta.add(modifTB);
+		
+		//crear una Tarjeta
+		
+		crearTarjeta.setVisible(true);
+		crearTarjeta.setLayout(new GridLayout(8,2));
+		JLabel crearT1 = new JLabel("Numero:");
+		JLabel crearT2 = new JLabel("Limite_Diario:");
+		JLabel crearT3 = new JLabel("Limite_mensual:");
+		JLabel crearT4 = new JLabel("Pin:");
+		JLabel crearT5 = new JLabel("Tipo:");
+		JLabel crearT6 = new JLabel("Cuenta:");
+		JLabel crearT7 = new JLabel("Cliente:");
+		JButton volverUser12= new JButton("Volver");
+		
+		JTextField crearTT1 = new JTextField(15);
+		JTextField crearTT2 = new JTextField(15);
+		JTextField crearTT3 = new JTextField(15);
+		JTextField crearTT4 = new JTextField(15);
+		JTextField crearTT5 = new JTextField(15);
+		JTextField crearTT6 = new JTextField(15);
+		JTextField crearTT7 = new JTextField(15);
+		JButton crearTB = new JButton("Crear");
+		
+		crearTarjeta.add(crearT1);
+		crearTarjeta.add(crearTT1);
+		crearTarjeta.add(crearT2);
+		crearTarjeta.add(crearTT2);
+		crearTarjeta.add(crearT3);
+		crearTarjeta.add(crearTT3);
+		crearTarjeta.add(crearT4);
+		crearTarjeta.add(crearTT4);
+		crearTarjeta.add(crearT5);	
+		crearTarjeta.add(crearTT5);
+		crearTarjeta.add(crearT6);	
+		crearTarjeta.add(crearTT6);
+		crearTarjeta.add(crearT7);	
+		crearTarjeta.add(crearTT7);
+		crearTarjeta.add(volverUser12);
+		crearTarjeta.add(crearTB);
+		
+		//modificar un usuario
+		
+		modificarUsuario.setVisible(true);
+		modificarUsuario.setLayout(new GridLayout(9,2));
+		JLabel modificarU1 = new JLabel("DNI del user a modificar:");
+		JLabel modificarU2 = new JLabel("Contraseña:");
+		JLabel modificarU3 = new JLabel("Nombre:");
+		JLabel modificarU4 = new JLabel("Apellido1:");
+		JLabel modificarU5 = new JLabel("Apellido2:");
+		JLabel modificarU6 = new JLabel("Telefono:");
+		JLabel modificarU7 = new JLabel("Direccion:");
+		JLabel modificarU8 = new JLabel("Email:");
+		JButton volverUser13= new JButton("Volver");
+		
+		JTextField modificarUT1 = new JTextField(15);
+		JTextField modificarUT2 = new JTextField(15);
+		JTextField modificarUT3 = new JTextField(15);
+		JTextField modificarUT4 = new JTextField(15);
+		JTextField modificarUT5 = new JTextField(15);
+		JTextField modificarUT6 = new JTextField(15);
+		JTextField modificarUT7 = new JTextField(15);
+		JTextField modificarUT8 = new JTextField(15);
+		JButton modificarUB = new JButton("Modificar");
+		
+		modificarUsuario.add(modificarU1);
+		modificarUsuario.add(modificarUT1);
+		modificarUsuario.add(modificarU2);
+		modificarUsuario.add(modificarUT2);
+		modificarUsuario.add(modificarU3);
+		modificarUsuario.add(modificarUT3);
+		modificarUsuario.add(modificarU4);
+		modificarUsuario.add(modificarUT4);
+		modificarUsuario.add(modificarU5);	
+		modificarUsuario.add(modificarUT5);
+		modificarUsuario.add(modificarU6);	
+		modificarUsuario.add(modificarUT6);
+		modificarUsuario.add(modificarU7);	
+		modificarUsuario.add(modificarUT7);
+		modificarUsuario.add(modificarU8);	
+		modificarUsuario.add(modificarUT8);
+		modificarUsuario.add(volverUser13);
+		modificarUsuario.add(modificarUB);
+		
+		//crear un usuario
+		
+		crearUsuario.setVisible(true);
+		crearUsuario.setLayout(new GridLayout(9,2));
+		JLabel crearU1 = new JLabel("DNI:");
+		JLabel crearU2 = new JLabel("Contraseña:");
+		JLabel crearU3 = new JLabel("Nombre:");
+		JLabel crearU4 = new JLabel("Apellido1:");
+		JLabel crearU5 = new JLabel("Apellido2:");
+		JLabel crearU6 = new JLabel("Telefono:");
+		JLabel crearU7 = new JLabel("Direccion:");
+		JLabel crearU8 = new JLabel("Email:");
+		JButton volverUser14= new JButton("Volver");
+		
+		JTextField crearUT1 = new JTextField(15);
+		JTextField crearUT2 = new JTextField(15);
+		JTextField crearUT3 = new JTextField(15);
+		JTextField crearUT4 = new JTextField(15);
+		JTextField crearUT5 = new JTextField(15);
+		JTextField crearUT6  = new JTextField(15);
+		JTextField crearUT7 = new JTextField(15);
+		JTextField crearUT8 = new JTextField(15);
+		JButton crearUB = new JButton("Crear");
+		
+		crearUsuario.add(crearU1);
+		crearUsuario.add(crearUT1);
+		crearUsuario.add(crearU2);
+		crearUsuario.add(crearUT2);
+		crearUsuario.add(crearU3);
+		crearUsuario.add(crearUT3);
+		crearUsuario.add(crearU4);
+		crearUsuario.add(crearUT4);
+		crearUsuario.add(crearU5);	
+		crearUsuario.add(crearUT5);
+		crearUsuario.add(crearU6);	
+		crearUsuario.add(crearUT6);
+		crearUsuario.add(crearU7);	
+		crearUsuario.add(crearUT7);
+		crearUsuario.add(crearU8);	
+		crearUsuario.add(crearUT8);
+		crearUsuario.add(volverUser14);
+		crearUsuario.add(crearUB);
+		
+		
+		
 		
 		
 		c.add(panel,"panel");
@@ -433,6 +600,10 @@ public  class VistaPrincipal extends JFrame {
 		c.add(elegirTarjetas,"elegirTarjetas");
 		c.add(elegirCuentas,"elegirCuentas");
 		c.add(crearCuenta,"crearCuenta");
+		c.add(modificarTarjeta,"modificarTarjeta");
+		c.add(crearTarjeta,"crearTarjeta");
+		c.add(modificarUsuario,"modificarUser");
+		c.add(crearUsuario,"crearUser");
 		//configuracion de las acciones de los botones
 		iniciarUser.addActionListener(new ActionListener() {
 
@@ -455,8 +626,11 @@ public  class VistaPrincipal extends JFrame {
 		iniciarS.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)  {
+				
 				if(l.checkLogin(nombreUser.getText(), contrasena.getPassword())) {
+					l.mostrarSaldo(saldo,nombreUser.getText());
+					l.mostrarHistorial(historial);
 					cl.show(c,"usuario");
 				}else {
 					JOptionPane.showMessageDialog(new JFrame(), "Error de inicio de sesion pruebe de nuevo");
@@ -622,7 +796,53 @@ public  class VistaPrincipal extends JFrame {
 			}
 			
 		});
+		volverUser10.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminCuentas");
+				
+			}
+			
+		});
 		
+		volverUser11.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminTarjetas");
+				
+			}
+			
+		});
+		volverUser12.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminTarjetas");
+				
+			}
+			
+		});
+		
+		volverUser13.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminUser");
+				
+			}
+			
+		});
+		volverUser14.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "adminUser");
+				
+			}
+			
+		});
 		
 		
 		retirar.addActionListener(new ActionListener() {
@@ -698,7 +918,7 @@ public  class VistaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				cl.show(c, "modificarUser");
 				
 			}
 			
@@ -749,8 +969,8 @@ public  class VistaPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(l.borrarTarjeta(textTarjeta.getText())) {
-					JOptionPane.showMessageDialog(new JFrame(), "Cuenta borrada con exito");			
-					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la cuenta, introduzcalo de nuevo");			
+					JOptionPane.showMessageDialog(new JFrame(), "Tarjeta borrada con exito");			
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la Tarjeta, introduzcalo de nuevo");			
 			}
 		});
 		buttonUser.addActionListener(new ActionListener() {
@@ -759,8 +979,8 @@ public  class VistaPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(l.borrarUser(textUser.getText())) {
-					JOptionPane.showMessageDialog(new JFrame(), "Cuenta borrada con exito");			
-					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar la cuenta, introduzcalo de nuevo");			
+					JOptionPane.showMessageDialog(new JFrame(), "Usuario borrado con exito");			
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al borrar el usuario, introduzcalo de nuevo");			
 			}
 		});
 		crearCuentas.addActionListener(new ActionListener() {
@@ -772,6 +992,92 @@ public  class VistaPrincipal extends JFrame {
 			}
 			
 		});
+		
+		modificarTarjetas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "modificarTarjeta");
+				
+			}
+			
+		});
+		crearTarjetas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c,"crearTarjeta");
+			}
+			
+		});
+		
+		crearUser.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(c, "crearUser");
+				
+			}
+			
+		});
+		
+		modifTB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.modificarTarjeta(modifTT1.getText(),modifTT2.getText(),modifTT3.getText(),modifTT4.getText(),modifTT5.getText())){
+					JOptionPane.showMessageDialog(new JFrame(), "Se ha modificado la tarjeta");
+				}else JOptionPane.showMessageDialog(new JFrame(), "Error al modificar la tarjeta, introduzcalo de nuevo");
+				
+				
+			}
+			
+		});
+		
+		crearTB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.crearTarjeta(crearTT1.getText(),crearTT2.getText(),crearTT3.getText(),crearTT4.getText(),crearTT5.getText(),crearTT6.getText(),crearTT7.getText() )) {
+					JOptionPane.showMessageDialog(new JFrame(), "Se ha creado la tarjeta");
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al crear la tarjeta, introduzcalo de nuevo");
+				
+			}
+			
+		});
+		crearUB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UsuarioDTO us = new UsuarioDTO(crearUT3.getText(),crearUT4.getText(),crearUT5.getText(),crearUT6.getText(),crearUT8.getText(),crearUT7.getText(),crearUT1.getText(),crearUT2.getText());
+				if(l.crearUser(us)) {
+					JOptionPane.showMessageDialog(new JFrame(), "Se ha creado el usuario");
+				}else JOptionPane.showMessageDialog(new JFrame(), "Error al crear el usuario, introduzcalo de nuevo");
+				
+			}
+			
+		});
+		
+		modificarUB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.modificarUser(modificarUT3.getText(),modificarUT4.getText(),modificarUT5.getText(),modificarUT6.getText(),modificarUT8.getText(),modificarUT7.getText(),modificarUT1.getText(),modificarUT2.getText())) {
+				JOptionPane.showMessageDialog(new JFrame(), "Se ha modificado el usuario");
+			}else JOptionPane.showMessageDialog(new JFrame(), "Error al modificar el usuario, introduzcalo de nuevo");
+			}
+			
+		});
+		bCCuenta.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l.crearCuenta(tCuenta.getText(),tSaldo.getText())){
+				JOptionPane.showMessageDialog(new JFrame(), "Se ha creado la cuenta");
+			}else JOptionPane.showMessageDialog(new JFrame(), "Error al crear la cuenta, introduzcalo de nuevo");
+			}
+		});
+		
 		
 	}
 	

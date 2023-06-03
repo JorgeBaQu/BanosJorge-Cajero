@@ -16,11 +16,11 @@ email varchar(20)not null unique,
 direccion varchar(200)not null,
 dni char(9) primary key,
 contrasena varchar(20) not null,
-admin bit not null
+adm int unsigned not null
 );
 
 create table if not exists cuentas(
-iban int unsigned auto_increment primary key,
+iban int unsigned primary key,
 saldo int not null
 );
 
@@ -28,14 +28,14 @@ create table if not exists propietario(
 cuenta int unsigned,
 cliente char(9),
 primary key(cuenta, cliente),
-foreign key (cuenta) references cuentas(iban),
-foreign key (cliente) references clientes(dni)
+foreign key (cuenta) references cuentas(iban) on delete cascade on update cascade,
+foreign key (cliente) references clientes(dni)on delete cascade on update cascade
 );
 
 create table if not exists tarjetas(
 pin char(4) not null,
-numero int unsigned auto_increment primary key,
-tipo enum('credito','debito'),
+numero int unsigned  primary key,
+tipo varchar(20),
 limite_diario int not null,
 limite_mensual int not null,
 cuenta int unsigned,
@@ -43,24 +43,24 @@ cliente char(9),
 check(limite_diario>0),
 check(limite_mensual>0),
 check(limite_mensual>limite_diario),
-foreign key (cuenta,cliente) references propietario(cuenta,cliente)
+foreign key (cuenta,cliente) references propietario(cuenta,cliente)on delete cascade on update cascade
 );
 
 create table if not exists movimientos(
 cuenta int unsigned, 
 codigo int unsigned auto_increment primary key, 
 transferencia varchar(100) not null ,
-foreign key (cuenta) references cuentas(iban)
+foreign key (cuenta) references cuentas(iban)on delete cascade on update cascade
 );
 
 insert into clientes values('Jorge','Baños','Quiroga','600100100','jbq@gmail.com','Plaza Mayor', 123456789,'123',1),
 ('Aaron','Valea','Martin','600100200','avm@gmail.com','Plaza Mayor', 111222333,'123',0),
 ('Sergio','Erce','Martinez','600100300','sem@gmail.com','Plaza Mayor', 987654321,'123',0);
 
-insert into cuentas values(1, 1000),
-( 2,  1000),
-( 3, 1000),
-(4, 1000);
+insert into cuentas values(1,1000),
+(2,1000),
+(3,1000),
+(4,1000);
 
 insert into propietario values(1, 123456789),
 (2, 111222333),
