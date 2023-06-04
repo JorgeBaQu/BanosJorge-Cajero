@@ -73,3 +73,9 @@ insert into tarjetas values(1234, 1,'debito', 10, 100, 1, 123456789),
 (1234, 3, 'debito', 10, 100, 3, 987654321),
 (1234, 4, 'debito', 10, 100, 4, 123456789),
 (1234, 5, 'debito', 10, 100, 4, 111222333);
+
+insert into movimientos(cuenta,transferencia) values ('2','Sun Jun 04 20:53:27 CEST 2023 +250€'),
+('2','Sun Jun 04 20:55:58 CEST 2023 +300€'),
+('2','Sun Jun 04 21:37:44 CEST 2023 -20€'),
+('2','Sun Jun 04 21:37:49 CEST 2023 +20€'),
+('2','Sun Jun 04 21:37:52 CEST 2023 -20€');

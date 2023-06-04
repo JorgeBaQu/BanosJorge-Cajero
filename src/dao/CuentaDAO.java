@@ -42,6 +42,29 @@ public class CuentaDAO {
 			
 			 
 	}
+	
+	public int actualizarSaldo(int saldo,String tarjeta) {
+		 this.con = new Conectar();
+		 int n=2;
+		try {
+			Connection c = con.getConnect();
+			 ps = c.prepareStatement("update cuentas c inner join tarjetas t on c.iban=t.cuenta set c.saldo = ? where t.numero = ?");
+			 
+			 ps.setInt(1, saldo);
+			 ps.setInt(2,Integer.parseInt(tarjeta));
+			 n= ps.executeUpdate();
+			 
+			  
+		}catch(Exception e) {
+			System.out.println(e);
+			  }
+		finally {
+			
+			con.cerrarConexion(rs, con.getConnect(), ps);
+			
+		}
+		return n;
+	}
 	public int borrarCuenta(String cuenta) {
 		this.con = new Conectar();
 		 int n=2;

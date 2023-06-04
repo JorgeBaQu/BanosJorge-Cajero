@@ -7,10 +7,14 @@ import javax.swing.JTextArea;
 import dao.*;
 import dto.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Logica {
 	TarjetaDAO t = new TarjetaDAO();
 	CuentaDAO c = new CuentaDAO();
 	UsuarioDAO u = new UsuarioDAO();
+	MovimientosDAO m = new MovimientosDAO();
 	public boolean checkLogin(String user, char[] pass) {
 		
 		TarjetaDTO tarjeta = t.conseguirTarjeta(Integer.parseInt(user));
@@ -26,20 +30,45 @@ public class Logica {
 	}
 	
 public boolean checkLoginAdmin(String user, char[] pass) {
-		
-		
-		if(user.equals("hola")) {
+		UsuarioDTO admin = u.conseguirUsuario(user);;
+		String contra = new String(pass);
+		if(user.equals(admin.getDni())&&contra.equals(admin.getPass())&&admin.getAdmin()==1) {
 		return true;
 		}else {
 			return false;
 		}
 	}
+
+public boolean ingresarSaldo(String user, String dinero,JLabel saldo) {
+	String saldoRestante = saldo.getText();
+	TarjetaDTO tarjeta= new TarjetaDTO();
+	Date date = new Date();
+		int nuevoSaldo=Integer.parseInt(saldoRestante)+Integer.parseInt(dinero);
+		if(c.actualizarSaldo(nuevoSaldo, user)==1) {
+			tarjeta=t.conseguirTarjeta(Integer.parseInt(user));
+			String movimiento = date+" +"+dinero+"€";
+			m.insertarMovimiento(tarjeta.getCuenta(), movimiento);
+		this.mostrarSaldo(saldo, user);
+		return true;
+		}else return false;
 	
-public boolean comprobarSaldo(String user, String dinero) {
+}
 	
-	if(Integer.parseInt(dinero)>1000) {
-		return false;
-	}else return true;
+public boolean retirarSaldo(String user, String dinero,JLabel saldo) {
+	String saldoRestante = saldo.getText();
+	TarjetaDTO tarjeta= new TarjetaDTO();
+	Date date = new Date();
+	
+	if(Integer.parseInt(dinero)<Integer.parseInt(saldoRestante)) {
+		int nuevoSaldo=Integer.parseInt(saldoRestante)-Integer.parseInt(dinero);
+		if(c.actualizarSaldo(nuevoSaldo, user)==1) {
+		tarjeta=t.conseguirTarjeta(Integer.parseInt(user));
+		String movimiento = date+" -"+dinero+"€";
+		m.insertarMovimiento(tarjeta.getCuenta(), movimiento);
+		this.mostrarSaldo(saldo, user);
+		return true;
+		}else return false;
+	}else return false;
 	
 }
 
@@ -97,9 +126,21 @@ public void mostrarSaldo(JLabel saldo,String nTarjeta) {
 	saldo.setText(Integer.toString(cu.getSaldo()));
 }
 
-public void mostrarHistorial(JTextArea historial) {
-	historial.setText("hola");
+public void mostrarHistorial(JTextArea historial,String user) {
+	String movimientos ="";
+	ArrayList<String> mov= m.mostrarMovimientos(user);
+	for(int i = 0;i<mov.size();i++) {
+		movimientos= movimientos+mov.get(i)+"\n";
+		historial.setText(movimientos);
+	}
 	
+}
+
+public boolean cambiarPin(String tarjeta,String pin) {
+	
+	if(t.cambiarPin(tarjeta,pin)==1) {
+	return true;
+	}else return false;
 }
 	
 }

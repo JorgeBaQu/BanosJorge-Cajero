@@ -630,7 +630,7 @@ public  class VistaPrincipal extends JFrame  {
 				
 				if(l.checkLogin(nombreUser.getText(), contrasena.getPassword())) {
 					l.mostrarSaldo(saldo,nombreUser.getText());
-					l.mostrarHistorial(historial);
+					l.mostrarHistorial(historial,nombreUser.getText());
 					cl.show(c,"usuario");
 				}else {
 					JOptionPane.showMessageDialog(new JFrame(), "Error de inicio de sesion pruebe de nuevo");
@@ -707,9 +707,11 @@ public  class VistaPrincipal extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Integer.parseInt(cantidadI.getText())%10==0){
-				resultadoI.setText("El dinero ha sido ingresado con exito");
+					if(l.ingresarSaldo(nombreUser.getText(),cantidadI.getText(),saldo)) {
+						JOptionPane.showMessageDialog(new JFrame(), "El dinero se ha ingresado");
+					}else JOptionPane.showMessageDialog(new JFrame(), "Error al ingresar el dinero");
 			}else {
-				resultadoI.setText("Introduzca solo billetes en multiplos de 10");
+				JOptionPane.showMessageDialog(new JFrame(), "Error al ingresar el dinero,introduzca solo billetes multiplos de 10");
 			}
 			}
 		});
@@ -859,10 +861,10 @@ public  class VistaPrincipal extends JFrame  {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(l.comprobarSaldo(nombreUser.getText(),cantidadR.getText())){
-				resultadoR.setText("El dinero ha sido retirado con exito");
+				if(l.retirarSaldo(nombreUser.getText(),cantidadR.getText(),saldo)){
+					JOptionPane.showMessageDialog(new JFrame(), "Se ha retirado el dinero con exito");
 			}else {
-				resultadoR.setText("Error, saldo insuficiente");
+				JOptionPane.showMessageDialog(new JFrame(), "No se ha retirado el dinero con exito");
 			}
 			}
 		});
@@ -932,15 +934,7 @@ public  class VistaPrincipal extends JFrame  {
 			}
 			
 		});
-		modificarTarjetas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-			
-		});
+		
 		borrarCuentas.addActionListener(new ActionListener() {
 
 			@Override
@@ -1077,7 +1071,17 @@ public  class VistaPrincipal extends JFrame  {
 			}else JOptionPane.showMessageDialog(new JFrame(), "Error al crear la cuenta, introduzcalo de nuevo");
 			}
 		});
-		
+		bPin.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(pin1.getText().equals(pin2.getText())) {
+				if(l.cambiarPin(nombreUser.getText(),pin1.getText())) {
+					JOptionPane.showMessageDialog(new JFrame(), "Se ha cambiado el pin");
+				}else JOptionPane.showMessageDialog(new JFrame(), "No se ha cambiado el pin");
+				}else JOptionPane.showMessageDialog(new JFrame(), "Introduce el mismo pin en ambos campos");
+			}
+		});
 		
 	}
 	

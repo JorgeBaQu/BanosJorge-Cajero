@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import conectar.Conectar;
-
+import dto.CuentaDTO;
 import dto.UsuarioDTO;
 
 public class UsuarioDAO {
@@ -90,6 +90,41 @@ public class UsuarioDAO {
 			con.cerrarConexion(rs, con.getConnect(), ps);
 		}
 		return n;
+	}
+	
+	
+	public UsuarioDTO conseguirUsuario(String dni) {
+		this.con = new Conectar();
+		 UsuarioDTO usuario = null;
+		try {
+			Connection c = con.getConnect();
+			 ps = c.prepareStatement("select * from clientes  where dni = ? ");
+			 
+			 ps.setString(1, dni);
+			 rs = ps.executeQuery();
+			if(rs.next()) {
+			 String nombre=rs.getString("nombre");
+			 String apellido1=rs.getString("apellido1");
+			 String apellido2=rs.getString("apellido2");
+			 String telefono=rs.getString("telefono");
+			 String email= rs.getString("email");
+			 String direccion= rs.getString("direccion");
+			 String dnni= rs.getString("dni");
+			 String contrasena= rs.getString("contrasena");
+			 int admin = rs.getInt("adm");
+			 usuario = new UsuarioDTO(nombre,apellido1,apellido2, telefono, email, direccion, dnni, contrasena,admin);
+			} 
+			  
+		}catch(Exception e) {
+			System.out.println(e);
+			  }
+		finally {
+			
+			con.cerrarConexion(rs, con.getConnect(), ps);
+			
+		}
+		return usuario;
+			
 	}
 	
 }

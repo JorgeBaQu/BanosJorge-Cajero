@@ -109,4 +109,24 @@ public class TarjetaDAO {
 		return n;
 	}
 	
+	public int cambiarPin(String tarjeta,String pin) {
+		this.con = new Conectar();
+		int n=2;
+		try {
+			
+			Connection c = con.getConnect();
+			
+			ps = c.prepareStatement("update tarjetas set pin = ? where numero=?");
+			ps.setString(1, pin);
+			ps.setInt(2, Integer.parseInt(tarjeta));
+			 n = ps.executeUpdate();
+			
+			}catch(Exception e) {
+				System.out.println(e);
+			}finally{
+				con.cerrarConexion(rs, con.getConnect(), ps);
+			}
+		return n;
+	}
+	
 }

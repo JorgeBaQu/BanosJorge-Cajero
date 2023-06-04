@@ -17,6 +17,9 @@ public TarjetaDTO(String pin, int numero, String tipo, int limiteD, int limiteM,
 	this.cuenta = cuenta;
 	this.cliente = cliente;
 }
+public TarjetaDTO() {
+	
+}
 public String getPin() {
 	return pin;
 }
